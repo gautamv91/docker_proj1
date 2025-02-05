@@ -41,12 +41,14 @@ RUN pip3 install -r ./artefacts/requirements.txt
 
 EXPOSE 8501
 
-HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
+# HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
 # ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
 # replacing the jello world streamlit app with the insurance prediction app
 
-ENTRYPOINT ["streamlit", "run", "model_insurance_deploy.py", "--server.port=8501", "--server.address=0.0.0.0"]
+## Both ENTRYPOINT & CMD work
+# ENTRYPOINT ["streamlit", "run", "model_insurance_deploy.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "model_insurance_deploy.py", "--server.port=8501", "--server.address=0.0.0.0"]
 
 # docker build --no-cache -t docker_first .
 # docker run -p 8501:8501 docker_first
