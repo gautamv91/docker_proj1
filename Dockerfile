@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -y \
 # RUN git clone https://github.com/streamlit/streamlit-example.git .
 RUN git clone https://github.com/gautamv91/docker_proj1.git .
 
-RUN pip3 install -r .artefacts/requirements.txt
+RUN pip3 install -r ./artefacts/requirements.txt
 
 EXPOSE 8501
 
