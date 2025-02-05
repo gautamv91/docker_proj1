@@ -41,4 +41,13 @@ EXPOSE 8501
 
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
-ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# replacing the jello world streamlit app with the insurance prediction app
+
+ENTRYPOINT ["streamlit", "run", "model_insurance_deploy.py", "--server.port=8501", "--server.address=0.0.0.0"]
+
+# docker build -t docker_first .
+# docker run -p 8501:8501 docker_first
+
+# 1st 8501 is the port on host machine (my local) & the 2nd 8501 is the port on the container.
+# the site will be active on https://localhost:8501
